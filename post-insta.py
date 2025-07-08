@@ -1,0 +1,17 @@
+from instagrapi import Client
+
+def post_to_instagram(username, password, image_path, caption):
+    try:
+        cl = Client()
+        cl.login(username, password)
+        cl.photo_upload(image_path, caption)
+        print("Instagram post uploaded successfully!")
+    except Exception as e:
+        print(f"Error posting to Instagram: {e}")
+
+if __name__ == "__main__":
+    instagram_username = ""
+    instagram_password = ""
+    instagram_image_path = ""
+    instagram_caption = "Posted via Python! #Automation"
+    post_to_instagram(instagram_username, instagram_password, instagram_image_path, instagram_caption)
