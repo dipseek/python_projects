@@ -1,0 +1,12 @@
+Search Query: Python programming
+==================================================
+
+1. Demo result 1
+   URL: https://example.com/1
+
+2. Demo result 2
+   URL: https://example.com/2
+
+3. Demo result 3
+   URL: https://example.com/3
+

@@ -1,0 +1,25 @@
+# Core dependencies for the portfolio Python scripts
+psutil>=5.8.0
+requests>=2.25.0
+beautifulsoup4>=4.9.0
+twilio>=7.0.0
+
+# Optional dependencies for enhanced functionality
+streamlit>=1.28.0
+pandas>=1.3.0
+numpy>=1.21.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+scikit-learn>=1.0.0
+
+# For image processing (if needed)
+Pillow>=8.3.0
+opencv-python>=4.5.0
+
+# For web automation (if needed)
+selenium>=4.0.0
+webdriver-manager>=3.8.0
+
+# For AI/ML projects (optional - for full functionality)
+# google-generativeai>=0.3.0  # For Gemini AI integration
+# gradio>=4.0.0  # For web interfaces

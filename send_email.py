@@ -3,9 +3,9 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 # Your email credentials
-sender_email = "your_email@gmail.com"
-receiver_email = "receiver_email@example.com"
-password = "your_app_password"  # Use App Password, NOT your Gmail login
+sender_email = "dipseek2005@gmail.com"
+receiver_email = "khushishekhawat2104@gmail.com"
+password = "ojjo xayn ihxf ctri"  # Use App Password, NOT your Gmail login
 
 # Email subject and body
 subject = "Test Email from Python"
