@@ -8,11 +8,43 @@ import tempfile
 
 # Page configuration
 st.set_page_config(
-    page_title="Deepika Saini - LW Summer Internship Program 2025",
+    page_title="Deepika Saini - LW Summer Internship Program 2024",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Additional CSS and JavaScript to force full width
+st.markdown("""
+<style>
+    /* Override Streamlit's default container width */
+    .main .block-container {
+        max-width: none !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+</style>
+<script>
+    // Force code blocks to use full width after page load
+    setTimeout(function() {
+        const codeBlocks = document.querySelectorAll('[data-testid="stCodeBlock"]');
+        codeBlocks.forEach(block => {
+            block.style.width = '100%';
+            block.style.maxWidth = 'none';
+            const innerDiv = block.querySelector('div');
+            if (innerDiv) {
+                innerDiv.style.width = '100%';
+                innerDiv.style.maxWidth = 'none';
+            }
+            const pre = block.querySelector('pre');
+            if (pre) {
+                pre.style.width = '100%';
+                pre.style.maxWidth = 'none';
+            }
+        });
+    }, 1000);
+</script>
+""", unsafe_allow_html=True)
 
 # Function to run Python code and capture output
 def run_python_code(code, timeout=30):
@@ -68,6 +100,14 @@ def run_python_code(code, timeout=30):
 # Custom CSS for better styling
 st.markdown("""
 <style>
+    /* Force full width layout */
+    .main .block-container {
+        max-width: none !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        width: 100% !important;
+    }
+    
     .main-header {
         font-size: 2.5rem;
         font-weight: bold;
@@ -96,31 +136,165 @@ st.markdown("""
         margin: 1rem 0;
     }
     .tech-badge {
-        background-color: #3498db;
-        color: white;
+        background-color: #3498db !important;
+        color: white !important;
         padding: 0.3rem 0.8rem;
         border-radius: 15px;
         font-size: 0.8rem;
         margin: 0.2rem;
         display: inline-block;
+        border: none;
+        text-decoration: none;
     }
+    
+    /* AGGRESSIVE CODE BLOCK STYLING */
+    [data-testid="stCodeBlock"] {
+        width: calc(100vw - 4rem) !important;
+        max-width: none !important;
+        margin-left: -1rem !important;
+        margin-right: -1rem !important;
+        border-radius: 8px !important;
+        border: 2px solid #e9ecef !important;
+        background: #f8f9fa !important;
+    }
+    
+    [data-testid="stCodeBlock"] > div {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 1rem !important;
+    }
+    
+    [data-testid="stCodeBlock"] pre {
+        width: 100% !important;
+        max-width: none !important;
+        overflow-x: auto !important;
+        white-space: pre !important;
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    [data-testid="stCodeBlock"] code {
+        width: 100% !important;
+        max-width: none !important;
+        display: block !important;
+        font-family: 'Courier New', monospace !important;
+    }
+    
+    /* Fallback for older Streamlit versions */
+    .stCodeBlock {
+        width: calc(100vw - 4rem) !important;
+        max-width: none !important;
+        margin-left: -1rem !important;
+        margin-right: -1rem !important;
+    }
+    
+    .stCodeBlock > div {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .stCodeBlock pre {
+        width: 100% !important;
+        max-width: none !important;
+        overflow-x: auto !important;
+    }
+    
     .code-container {
         background-color: #f8f9fa;
-        border: 1px solid #e9ecef;
-        border-radius: 8px;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 0;
+        margin: 1rem -1rem;
+        width: calc(100% + 2rem);
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .code-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1rem 1.5rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .code-content {
+        background-color: #ffffff;
+        overflow: auto;
+        width: 100%;
+        max-height: 80vh;
         padding: 1rem;
-        margin: 1rem 0;
-        max-height: 600px;
-        overflow-y: auto;
     }
-    .stCodeBlock {
-        max-height: 500px !important;
-        overflow-y: auto !important;
-        font-size: 0.9rem !important;
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .main-header {
+            font-size: 2rem !important;
+        }
+        .section-header {
+            font-size: 1.5rem !important;
+        }
+        .tech-badge {
+            font-size: 0.7rem !important;
+            padding: 0.2rem 0.6rem !important;
+        }
+        [data-testid="stCodeBlock"] {
+            width: calc(100vw - 2rem) !important;
+            margin-left: -0.5rem !important;
+            margin-right: -0.5rem !important;
+            font-size: 0.8rem !important;
+        }
+        .code-container {
+            margin: 1rem -0.5rem !important;
+            width: calc(100% + 1rem) !important;
+        }
     }
-    .stCodeBlock pre {
-        max-height: 500px !important;
-        overflow-y: auto !important;
+    
+    /* Error message styling */
+    .stAlert > div {
+        border-radius: 8px;
+    }
+    
+    /* Responsive design improvements */
+    @media (max-width: 768px) {
+        .main-header {
+            font-size: 2rem !important;
+        }
+        .section-header {
+            font-size: 1.5rem !important;
+        }
+        .tech-badge {
+            font-size: 0.7rem !important;
+            padding: 0.2rem 0.6rem !important;
+        }
+        .code-container {
+            margin: 1rem 0 !important;
+            padding: 1rem !important;
+            max-height: 50vh !important;
+            width: 100% !important;
+            min-width: 95% !important;
+        }
+        .code-header {
+            font-size: 1rem !important;
+            padding: 0.8rem 1rem !important;
+            margin: -1rem -1rem 0.8rem -1rem !important;
+        }
+        .stCodeBlock {
+            font-size: 0.8rem !important;
+            max-height: 45vh !important;
+            width: 100% !important;
+        }
+    }
+    
+    /* Error message styling */
+    .stAlert > div {
+        border-radius: 8px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -136,17 +310,17 @@ menu = st.sidebar.selectbox(
 )
 
 # Introduction Section
-if menu == " Introduction":
+if menu == "🏠 Introduction":
     st.markdown('<h1 class="main-header">Deepika Saini</h1>', unsafe_allow_html=True)
-    st.markdown('<h2 class="section-header">Summer Internship Program 2025</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header">Summer Internship Program 2024</h2>', unsafe_allow_html=True)
     
     st.markdown("""
     ### **Training Details**
     
-    ** Name:** Deepika Saini  
-    ** Duration:** 15 June – 31 July 2024  
-    ** Organization:** LinuxWorld Pvt. Ltd.  
-    ** Field:** Machine Learning  
+    **👤 Name:** Deepika Saini  
+    **📅 Duration:** 15 June – 31 July 2024  
+    **🏢 Organization:** LinuxWorld Pvt. Ltd.  
+    **🎯 Field:** Machine Learning  
     
     ### **About the Training**
     
@@ -257,15 +431,29 @@ elif menu == "📋 Tasks":
             if filename and os.path.exists(filename):
                 if st.button(f"View Code", key=f"python_{i}"):
                     try:
-                        with open(filename, "r", encoding="utf-8") as f:
-                            code_content = f.read()
-                            with st.container():
-                                st.markdown("### 📄 Code View")
-                                st.markdown('<div class="code-container">', unsafe_allow_html=True)
-                                st.code(code_content, language="python")
-                                st.markdown('</div>', unsafe_allow_html=True)
+                        if os.path.exists(filename):
+                            with open(filename, "r", encoding="utf-8") as f:
+                                code_content = f.read()
+                                # Use expander for better width control
+                                with st.expander(f"📄 {filename}", expanded=True):
+                                    # Use text_area which uses full width by default
+                                    st.text_area(
+                                        label="",
+                                        value=code_content,
+                                        height=500,
+                                        key=f"code_display_{i}",
+                                        label_visibility="collapsed"
+                                    )
+                        else:
+                            st.warning(f"⚠️ File '{filename}' not found in the current directory.")
+                    except FileNotFoundError:
+                        st.error(f"❌ File '{filename}' could not be found.")
+                    except PermissionError:
+                        st.error(f"❌ Permission denied when trying to read '{filename}'.")
+                    except UnicodeDecodeError:
+                        st.error(f"❌ Unable to decode '{filename}'. The file may contain non-UTF-8 characters.")
                     except Exception as e:
-                        st.error(f"Error reading file: {e}")
+                        st.error(f"❌ Unexpected error reading file '{filename}': {str(e)}")
             elif filename:
                 st.markdown(f"*File: {filename}*")
         with col3:
@@ -362,7 +550,14 @@ elif menu == "📋 Tasks":
     st.markdown("Click on any file to view its code:")
     
     # Get all Python and notebook files
-    python_files = [f for f in os.listdir('.') if f.endswith(('.py', '.ipynb')) and f != 'summer_training_portfolio.py']
+    try:
+        python_files = [f for f in os.listdir('.') if f.endswith(('.py', '.ipynb')) and f != 'summer_training_portfolio.py']
+    except PermissionError:
+        st.error("❌ Permission denied when trying to list files in the current directory.")
+        python_files = []
+    except Exception as e:
+        st.error(f"❌ Error listing files: {str(e)}")
+        python_files = []
     
     # Create columns for better layout
     cols = st.columns(4)
@@ -374,15 +569,28 @@ elif menu == "📋 Tasks":
             with col1:
                 if st.button(f"View", key=f"view_file_{i}"):
                     try:
-                        with open(filename, "r", encoding="utf-8") as f:
-                            code_content = f.read()
-                            with st.container():
-                                st.markdown(f"### 📄 {filename}")
-                                st.markdown('<div class="code-container">', unsafe_allow_html=True)
-                                st.code(code_content, language="python")
-                                st.markdown('</div>', unsafe_allow_html=True)
+                        if os.path.exists(filename):
+                            with open(filename, "r", encoding="utf-8") as f:
+                                code_content = f.read()
+                                # Use expander for better width control
+                                with st.expander(f"📄 {filename}", expanded=True):
+                                    st.text_area(
+                                        label="",
+                                        value=code_content,
+                                        height=500,
+                                        key=f"all_files_{i}",
+                                        label_visibility="collapsed"
+                                    )
+                        else:
+                            st.warning(f"⚠️ File '{filename}' not found in the current directory.")
+                    except FileNotFoundError:
+                        st.error(f"❌ File '{filename}' could not be found.")
+                    except PermissionError:
+                        st.error(f"❌ Permission denied when trying to read '{filename}'.")
+                    except UnicodeDecodeError:
+                        st.error(f"❌ Unable to decode '{filename}'. The file may contain non-UTF-8 characters.")
                     except Exception as e:
-                        st.error(f"Error reading file: {e}")
+                        st.error(f"❌ Unexpected error reading file '{filename}': {str(e)}")
             with col2:
                 pass # Removed Run button
 
@@ -408,16 +616,30 @@ elif menu == "🚀 Mini Projects":
         st.markdown("**File:** RoadSafetyGemini-fixed.py")
     with col2:
         if st.button("View Code", key="road_safety"):
+            filename = "RoadSafetyGemini-fixed.py"
             try:
-                with open("RoadSafetyGemini-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    with st.container():
-                        st.markdown("### 📄 Code View")
-                        st.markdown('<div class="code-container">', unsafe_allow_html=True)
-                        st.code(code_content, language="python")
-                        st.markdown('</div>', unsafe_allow_html=True)
+                if os.path.exists(filename):
+                    with open(filename, "r", encoding="utf-8") as f:
+                        code_content = f.read()
+                        with st.container():
+                            with st.expander(f"🚗 {filename} - Road Safety Chatbot", expanded=True):
+                                st.text_area(
+                                    label="",
+                                    value=code_content,
+                                    height=500,
+                                    key="road_safety_code",
+                                    label_visibility="collapsed"
+                                )
+                else:
+                    st.warning(f"⚠️ File '{filename}' not found in the current directory.")
+            except FileNotFoundError:
+                st.error(f"❌ File '{filename}' could not be found.")
+            except PermissionError:
+                st.error(f"❌ Permission denied when trying to read '{filename}'.")
+            except UnicodeDecodeError:
+                st.error(f"❌ Unable to decode '{filename}'. The file may contain non-UTF-8 characters.")
             except Exception as e:
-                st.error(f"Error reading file: {e}")
+                st.error(f"❌ Unexpected error reading file '{filename}': {str(e)}")
     with col3:
         pass # Removed Run Code button
     
@@ -441,16 +663,30 @@ elif menu == "🚀 Mini Projects":
         st.markdown("**File:** automation_panel.py")
     with col2:
         if st.button("View Code", key="automation"):
+            filename = "automation_panel.py"
             try:
-                with open("automation_panel.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    with st.container():
-                        st.markdown("### 📄 Code View")
-                        st.markdown('<div class="code-container">', unsafe_allow_html=True)
-                        st.code(code_content, language="python")
-                        st.markdown('</div>', unsafe_allow_html=True)
+                if os.path.exists(filename):
+                    with open(filename, "r", encoding="utf-8") as f:
+                        code_content = f.read()
+                        with st.container():
+                            with st.expander(f"⚙️ {filename} - Automation Panel", expanded=True):
+                                st.text_area(
+                                    label="",
+                                    value=code_content,
+                                    height=500,
+                                    key="automation_code",
+                                    label_visibility="collapsed"
+                                )
+                else:
+                    st.warning(f"⚠️ File '{filename}' not found in the current directory.")
+            except FileNotFoundError:
+                st.error(f"❌ File '{filename}' could not be found.")
+            except PermissionError:
+                st.error(f"❌ Permission denied when trying to read '{filename}'.")
+            except UnicodeDecodeError:
+                st.error(f"❌ Unable to decode '{filename}'. The file may contain non-UTF-8 characters.")
             except Exception as e:
-                st.error(f"Error reading file: {e}")
+                st.error(f"❌ Unexpected error reading file '{filename}': {str(e)}")
     with col3:
         pass # Removed Run Code button
     
@@ -475,16 +711,30 @@ elif menu == "🚀 Mini Projects":
         st.markdown("**File:** salary_prediction-fixed.py")
     with col2:
         if st.button("View Code", key="salary"):
+            filename = "salary_prediction-fixed.py"
             try:
-                with open("salary_prediction-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    with st.container():
-                        st.markdown("### 📄 Code View")
-                        st.markdown('<div class="code-container">', unsafe_allow_html=True)
-                        st.code(code_content, language="python")
-                        st.markdown('</div>', unsafe_allow_html=True)
+                if os.path.exists(filename):
+                    with open(filename, "r", encoding="utf-8") as f:
+                        code_content = f.read()
+                        with st.container():
+                            with st.expander(f"💰 {filename} - Salary Prediction Model", expanded=True):
+                                st.text_area(
+                                    label="",
+                                    value=code_content,
+                                    height=500,
+                                    key="salary_code",
+                                    label_visibility="collapsed"
+                                )
+                else:
+                    st.warning(f"⚠️ File '{filename}' not found in the current directory.")
+            except FileNotFoundError:
+                st.error(f"❌ File '{filename}' could not be found.")
+            except PermissionError:
+                st.error(f"❌ Permission denied when trying to read '{filename}'.")
+            except UnicodeDecodeError:
+                st.error(f"❌ Unable to decode '{filename}'. The file may contain non-UTF-8 characters.")
             except Exception as e:
-                st.error(f"Error reading file: {e}")
+                st.error(f"❌ Unexpected error reading file '{filename}': {str(e)}")
     with col3:
         pass # Removed Run Code button
     
@@ -509,16 +759,30 @@ elif menu == "🚀 Mini Projects":
         st.markdown("**File:** house_price_pred-fixed.py")
     with col2:
         if st.button("View Code", key="house_price"):
+            filename = "house_price_pred-fixed.py"
             try:
-                with open("house_price_pred-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    with st.container():
-                        st.markdown("### 📄 Code View")
-                        st.markdown('<div class="code-container">', unsafe_allow_html=True)
-                        st.code(code_content, language="python")
-                        st.markdown('</div>', unsafe_allow_html=True)
+                if os.path.exists(filename):
+                    with open(filename, "r", encoding="utf-8") as f:
+                        code_content = f.read()
+                        with st.container():
+                            with st.expander(f"🏠 {filename} - House Price Prediction Model", expanded=True):
+                                st.text_area(
+                                    label="",
+                                    value=code_content,
+                                    height=500,
+                                    key="house_price_code",
+                                    label_visibility="collapsed"
+                                )
+                else:
+                    st.warning(f"⚠️ File '{filename}' not found in the current directory.")
+            except FileNotFoundError:
+                st.error(f"❌ File '{filename}' could not be found.")
+            except PermissionError:
+                st.error(f"❌ Permission denied when trying to read '{filename}'.")
+            except UnicodeDecodeError:
+                st.error(f"❌ Unable to decode '{filename}'. The file may contain non-UTF-8 characters.")
             except Exception as e:
-                st.error(f"Error reading file: {e}")
+                st.error(f"❌ Unexpected error reading file '{filename}': {str(e)}")
     with col3:
         pass # Removed Run Code button
     
@@ -543,16 +807,30 @@ elif menu == "🚀 Mini Projects":
         st.markdown("**File:** career-counselling-app-fixed.py")
     with col2:
         if st.button("View Code", key="career"):
+            filename = "career-counselling-app-fixed.py"
             try:
-                with open("career-counselling-app-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    with st.container():
-                        st.markdown("### 📄 Code View")
-                        st.markdown('<div class="code-container">', unsafe_allow_html=True)
-                        st.code(code_content, language="python")
-                        st.markdown('</div>', unsafe_allow_html=True)
+                if os.path.exists(filename):
+                    with open(filename, "r", encoding="utf-8") as f:
+                        code_content = f.read()
+                        with st.container():
+                            with st.expander(f"🎯 {filename} - Career Counselling Application", expanded=True):
+                                st.text_area(
+                                    label="",
+                                    value=code_content,
+                                    height=500,
+                                    key="career_code",
+                                    label_visibility="collapsed"
+                                )
+                else:
+                    st.warning(f"⚠️ File '{filename}' not found in the current directory.")
+            except FileNotFoundError:
+                st.error(f"❌ File '{filename}' could not be found.")
+            except PermissionError:
+                st.error(f"❌ Permission denied when trying to read '{filename}'.")
+            except UnicodeDecodeError:
+                st.error(f"❌ Unable to decode '{filename}'. The file may contain non-UTF-8 characters.")
             except Exception as e:
-                st.error(f"Error reading file: {e}")
+                st.error(f"❌ Unexpected error reading file '{filename}': {str(e)}")
     with col3:
         pass # Removed Run Code button
 
@@ -988,6 +1266,19 @@ elif menu == "🎯 Conclusion":
     **GitHub:** https://github.com/dipseek  
     
     *Ready to contribute to innovative projects and continue learning!*
+    """)
+
+# Default case for menu navigation
+else:
+    st.error("⚠️ Unknown menu selection. Please select a valid option from the sidebar.")
+    st.markdown("### Available Sections:")
+    st.markdown("""
+    - 🏠 Introduction
+    - 📚 Learnings  
+    - 📋 Tasks
+    - 🚀 Mini Projects
+    - 💼 LinkedIn Posts
+    - 🎯 Conclusion
     """)
 
 # Footer
