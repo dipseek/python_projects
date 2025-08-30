@@ -136,17 +136,17 @@ menu = st.sidebar.selectbox(
 )
 
 # Introduction Section
-if menu == "🏠 Introduction":
+if menu == " Introduction":
     st.markdown('<h1 class="main-header">Deepika Saini</h1>', unsafe_allow_html=True)
-    st.markdown('<h2 class="section-header">Summer Training Portfolio</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header">Summer Internship Program 2025</h2>', unsafe_allow_html=True)
     
     st.markdown("""
     ### **Training Details**
     
-    **👤 Name:** Deepika Saini  
-    **📅 Duration:** 23 June – 31 July 2024  
-    **🏢 Organization:** LinuxWorld Pvt. Ltd.  
-    **🎯 Field:** Machine Learning  
+    ** Name:** Deepika Saini  
+    ** Duration:** 15 June – 31 July 2024  
+    ** Organization:** LinuxWorld Pvt. Ltd.  
+    ** Field:** Machine Learning  
     
     ### **About the Training**
     
@@ -230,16 +230,16 @@ elif menu == "📋 Tasks":
     # Python Tasks
     st.markdown("### 🐍 Python Tasks")
     python_tasks = [
-        ("Read the RAM using Python", "read-ram-fixed.py"),
+        ("Read the RAM using Python", "read-ram.py"),
         ("Send WhatsApp message using Python", "send-whatsapp-message.py"),
-        ("Send email using Python", "send_email-fixed.py"),
+        ("Send email using Python", "send_email.py"),
         ("Send WhatsApp message without using contact number", None),
-        ("Send SMS using Python", "send-sms-fixed.py"),
+        ("Send SMS using Python", "send-sms.py"),
         ("Make a phone call using Python", "make_calls.py"),
-        ("Search on Google using Python", "search-web-fixed.py"),
+        ("Search on Google using Python", "search-web.py"),
         ("Post on Instagram/X (Twitter)/Facebook using Python", "post-insta.py"),
         ("Download entire website data using Python", "download-website-data.py"),
-        ("Email without showing email ID", "send_email-fixed.py"),
+        ("Email without showing email ID", "send_email.py"),
         ("Technical difference between Tuple and List", None),
         ("Create digital image using Python", "create-digital-image3.py"),
         ("Swap faces in two images using Python", "swap_faces.py"),
@@ -270,35 +270,7 @@ elif menu == "📋 Tasks":
                 st.markdown(f"*File: {filename}*")
         with col3:
             if filename and os.path.exists(filename):
-                if st.button(f"Run Code", key=f"run_python_{i}"):
-                    try:
-                        with open(filename, "r", encoding="utf-8") as f:
-                            code_content = f.read()
-                            
-                        with st.container():
-                            st.markdown("### 🚀 Code Execution")
-                            
-                            # Show a spinner while running
-                            with st.spinner("Running code..."):
-                                result = run_python_code(code_content)
-                            
-                            # Display results
-                            if result['success']:
-                                st.success("✅ Code executed successfully!")
-                                if result['stdout']:
-                                    st.markdown("**Output:**")
-                                    st.code(result['stdout'], language="text")
-                            else:
-                                st.error("❌ Code execution failed!")
-                                if result['stderr']:
-                                    st.markdown("**Error:**")
-                                    st.code(result['stderr'], language="text")
-                                
-                            # Show return code
-                            st.info(f"Return Code: {result['returncode']}")
-                            
-                    except Exception as e:
-                        st.error(f"Error running file: {e}")
+                pass # Removed Run Code button
     
     st.markdown("---")
     
@@ -412,35 +384,7 @@ elif menu == "📋 Tasks":
                     except Exception as e:
                         st.error(f"Error reading file: {e}")
             with col2:
-                if st.button(f"Run", key=f"run_file_{i}"):
-                    try:
-                        with open(filename, "r", encoding="utf-8") as f:
-                            code_content = f.read()
-                            
-                        with st.container():
-                            st.markdown(f"### 🚀 Running {filename}")
-                            
-                            # Show a spinner while running
-                            with st.spinner("Running code..."):
-                                result = run_python_code(code_content)
-                            
-                            # Display results
-                            if result['success']:
-                                st.success("✅ Code executed successfully!")
-                                if result['stdout']:
-                                    st.markdown("**Output:**")
-                                    st.code(result['stdout'], language="text")
-                            else:
-                                st.error("❌ Code execution failed!")
-                                if result['stderr']:
-                                    st.markdown("**Error:**")
-                                    st.code(result['stderr'], language="text")
-                                
-                            # Show return code
-                            st.info(f"Return Code: {result['returncode']}")
-                            
-                    except Exception as e:
-                        st.error(f"Error running file: {e}")
+                pass # Removed Run button
 
 # Mini Projects Section
 elif menu == "🚀 Mini Projects":
@@ -461,11 +405,11 @@ elif menu == "🚀 Mini Projects":
     
     col1, col2, col3 = st.columns([2, 1, 1])
     with col1:
-        st.markdown("**File:** RoadSafetyGemini.ipynb")
+        st.markdown("**File:** RoadSafetyGemini-fixed.py")
     with col2:
         if st.button("View Code", key="road_safety"):
             try:
-                with open("RoadSafetyGemini.ipynb", "r", encoding="utf-8") as f:
+                with open("RoadSafetyGemini-fixed.py", "r", encoding="utf-8") as f:
                     code_content = f.read()
                     with st.container():
                         st.markdown("### 📄 Code View")
@@ -475,35 +419,7 @@ elif menu == "🚀 Mini Projects":
             except Exception as e:
                 st.error(f"Error reading file: {e}")
     with col3:
-        if st.button("Run Code", key="run_road_safety"):
-            try:
-                with open("RoadSafetyGemini-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    
-                with st.container():
-                    st.markdown("### 🚀 Running RoadSafetyGemini.ipynb (Fixed Version)")
-                    
-                    # Show a spinner while running
-                    with st.spinner("Running code..."):
-                        result = run_python_code(code_content)
-                    
-                    # Display results
-                    if result['success']:
-                        st.success("✅ Code executed successfully!")
-                        if result['stdout']:
-                            st.markdown("**Output:**")
-                            st.code(result['stdout'], language="text")
-                    else:
-                        st.error("❌ Code execution failed!")
-                        if result['stderr']:
-                            st.markdown("**Error:**")
-                            st.code(result['stderr'], language="text")
-                        
-                    # Show return code
-                    st.info(f"Return Code: {result['returncode']}")
-                    
-            except Exception as e:
-                st.error(f"Error running file: {e}")
+        pass # Removed Run Code button
     
     st.markdown("---")
     
@@ -536,35 +452,7 @@ elif menu == "🚀 Mini Projects":
             except Exception as e:
                 st.error(f"Error reading file: {e}")
     with col3:
-        if st.button("Run Code", key="run_automation"):
-            try:
-                with open("automation_panel-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    
-                with st.container():
-                    st.markdown("### 🚀 Running automation_panel.py (Fixed Version)")
-                    
-                    # Show a spinner while running
-                    with st.spinner("Running code..."):
-                        result = run_python_code(code_content)
-                    
-                    # Display results
-                    if result['success']:
-                        st.success("✅ Code executed successfully!")
-                        if result['stdout']:
-                            st.markdown("**Output:**")
-                            st.code(result['stdout'], language="text")
-                    else:
-                        st.error("❌ Code execution failed!")
-                        if result['stderr']:
-                            st.markdown("**Error:**")
-                            st.code(result['stderr'], language="text")
-                        
-                    # Show return code
-                    st.info(f"Return Code: {result['returncode']}")
-                    
-            except Exception as e:
-                st.error(f"Error running file: {e}")
+        pass # Removed Run Code button
     
     st.markdown("---")
     
@@ -584,11 +472,11 @@ elif menu == "🚀 Mini Projects":
     
     col1, col2, col3 = st.columns([2, 1, 1])
     with col1:
-        st.markdown("**File:** salary_prediction.ipynb")
+        st.markdown("**File:** salary_prediction-fixed.py")
     with col2:
         if st.button("View Code", key="salary"):
             try:
-                with open("salary_prediction.ipynb", "r", encoding="utf-8") as f:
+                with open("salary_prediction-fixed.py", "r", encoding="utf-8") as f:
                     code_content = f.read()
                     with st.container():
                         st.markdown("### 📄 Code View")
@@ -598,35 +486,7 @@ elif menu == "🚀 Mini Projects":
             except Exception as e:
                 st.error(f"Error reading file: {e}")
     with col3:
-        if st.button("Run Code", key="run_salary"):
-            try:
-                with open("salary_prediction-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    
-                with st.container():
-                    st.markdown("### 🚀 Running salary_prediction.ipynb (Fixed Version)")
-                    
-                    # Show a spinner while running
-                    with st.spinner("Running code..."):
-                        result = run_python_code(code_content)
-                    
-                    # Display results
-                    if result['success']:
-                        st.success("✅ Code executed successfully!")
-                        if result['stdout']:
-                            st.markdown("**Output:**")
-                            st.code(result['stdout'], language="text")
-                    else:
-                        st.error("❌ Code execution failed!")
-                        if result['stderr']:
-                            st.markdown("**Error:**")
-                            st.code(result['stderr'], language="text")
-                        
-                    # Show return code
-                    st.info(f"Return Code: {result['returncode']}")
-                    
-            except Exception as e:
-                st.error(f"Error running file: {e}")
+        pass # Removed Run Code button
     
     st.markdown("---")
     
@@ -646,11 +506,11 @@ elif menu == "🚀 Mini Projects":
     
     col1, col2, col3 = st.columns([2, 1, 1])
     with col1:
-        st.markdown("**File:** house_price_pred.ipynb")
+        st.markdown("**File:** house_price_pred-fixed.py")
     with col2:
         if st.button("View Code", key="house_price"):
             try:
-                with open("house_price_pred.ipynb", "r", encoding="utf-8") as f:
+                with open("house_price_pred-fixed.py", "r", encoding="utf-8") as f:
                     code_content = f.read()
                     with st.container():
                         st.markdown("### 📄 Code View")
@@ -660,35 +520,7 @@ elif menu == "🚀 Mini Projects":
             except Exception as e:
                 st.error(f"Error reading file: {e}")
     with col3:
-        if st.button("Run Code", key="run_house_price"):
-            try:
-                with open("house_price_pred-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    
-                with st.container():
-                    st.markdown("### 🚀 Running house_price_pred.ipynb (Fixed Version)")
-                    
-                    # Show a spinner while running
-                    with st.spinner("Running code..."):
-                        result = run_python_code(code_content)
-                    
-                    # Display results
-                    if result['success']:
-                        st.success("✅ Code executed successfully!")
-                        if result['stdout']:
-                            st.markdown("**Output:**")
-                            st.code(result['stdout'], language="text")
-                    else:
-                        st.error("❌ Code execution failed!")
-                        if result['stderr']:
-                            st.markdown("**Error:**")
-                            st.code(result['stderr'], language="text")
-                        
-                    # Show return code
-                    st.info(f"Return Code: {result['returncode']}")
-                    
-            except Exception as e:
-                st.error(f"Error running file: {e}")
+        pass # Removed Run Code button
     
     st.markdown("---")
     
@@ -708,11 +540,11 @@ elif menu == "🚀 Mini Projects":
     
     col1, col2, col3 = st.columns([2, 1, 1])
     with col1:
-        st.markdown("**File:** career-counselling-app.py")
+        st.markdown("**File:** career-counselling-app-fixed.py")
     with col2:
         if st.button("View Code", key="career"):
             try:
-                with open("career-counselling-app.py", "r", encoding="utf-8") as f:
+                with open("career-counselling-app-fixed.py", "r", encoding="utf-8") as f:
                     code_content = f.read()
                     with st.container():
                         st.markdown("### 📄 Code View")
@@ -722,35 +554,7 @@ elif menu == "🚀 Mini Projects":
             except Exception as e:
                 st.error(f"Error reading file: {e}")
     with col3:
-        if st.button("Run Code", key="run_career"):
-            try:
-                with open("career-counselling-app-fixed.py", "r", encoding="utf-8") as f:
-                    code_content = f.read()
-                    
-                with st.container():
-                    st.markdown("### 🚀 Running career-counselling-app.py (Fixed Version)")
-                    
-                    # Show a spinner while running
-                    with st.spinner("Running code..."):
-                        result = run_python_code(code_content)
-                    
-                    # Display results
-                    if result['success']:
-                        st.success("✅ Code executed successfully!")
-                        if result['stdout']:
-                            st.markdown("**Output:**")
-                            st.code(result['stdout'], language="text")
-                    else:
-                        st.error("❌ Code execution failed!")
-                        if result['stderr']:
-                            st.markdown("**Error:**")
-                            st.code(result['stderr'], language="text")
-                        
-                    # Show return code
-                    st.info(f"Return Code: {result['returncode']}")
-                    
-            except Exception as e:
-                st.error(f"Error running file: {e}")
+        pass # Removed Run Code button
 
 # LinkedIn Posts Section
 elif menu == "💼 LinkedIn Posts":
