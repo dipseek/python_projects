@@ -318,7 +318,7 @@ if menu == "🏠 Introduction":
     ### **Training Details**
     
     **👤 Name:** Deepika Saini  
-    **📅 Duration:** 15 June – 31 July 2024  
+    **📅 Duration:** 15 June – 31 July 2025  
     **🏢 Organization:** LinuxWorld Pvt. Ltd.  
     **🎯 Field:** Machine Learning  
     
@@ -1174,7 +1174,7 @@ elif menu == "🎯 Conclusion":
     st.markdown("""
     ### **🎓 Summer Summary**
     
-    This comprehensive summer training program at **LinuxWorld Pvt. Ltd.** has been an incredible journey of learning and growth. Over the course of **23 June – 31 July 2024**, I have gained hands-on experience with cutting-edge technologies and developed practical skills that are highly relevant in today's tech industry.
+    This comprehensive summer training program at **LinuxWorld Pvt. Ltd.** has been an incredible journey of learning and growth. Over the course of **23 June – 31 July 2025**, I have gained hands-on experience with cutting-edge technologies and developed practical skills that are highly relevant in today's tech industry.
     
     ### **📈 Key Achievements**
     
