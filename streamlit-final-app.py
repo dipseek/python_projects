@@ -8,7 +8,7 @@ import tempfile
 
 # Page configuration
 st.set_page_config(
-    page_title="Deepika Saini - LW Summer Internship Program 2024",
+    page_title="Deepika Saini - LW Summer Internship Program 2025",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -312,7 +312,7 @@ menu = st.sidebar.selectbox(
 # Introduction Section
 if menu == "🏠 Introduction":
     st.markdown('<h1 class="main-header">Deepika Saini</h1>', unsafe_allow_html=True)
-    st.markdown('<h2 class="section-header">Summer Internship Program 2024</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header">Summer Internship Program 2025</h2>', unsafe_allow_html=True)
     
     st.markdown("""
     ### **Training Details**
